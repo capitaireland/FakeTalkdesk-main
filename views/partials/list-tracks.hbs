@@ -1,0 +1,91 @@
+<div class="container">
+  {{#each playlist.tracks}}
+  <div class="box">
+    <h3 class="title is-4">{{subject}}</h3>
+    <button class="button is-info toggle-details">Show Details</button>
+    
+    <div class="details" style="display: none;"> 
+      <div class="content">
+        {{#if description}}<p><strong>Description:</strong> {{description}}</p>{{/if}}
+        {{#if requester}}<p><strong>Requester:</strong> {{requester}}</p>{{/if}}
+        {{#if related_interaction}}<p><strong>Related Interaction:</strong> {{related_interaction}}</p>{{/if}}
+        {{#if group}}<p><strong>Group:</strong> {{group}}</p>{{/if}}
+        {{#if assignee}}<p><strong>Assignee:</strong> {{assignee}}</p>{{/if}}
+        {{#if tags}}<p><strong>Tags:</strong> {{tags}}</p>{{/if}}
+        {{#if form}}<p><strong>Form:</strong> {{form}}</p>{{/if}}
+        {{#if asset_defect_description}}<p><strong>Asset Defect Description:</strong> {{asset_defect_description}}</p>{{/if}}
+        {{#if channel}}<p><strong>Channel:</strong> {{channel}}</p>{{/if}}
+        {{#if subform}}<p><strong>Subform:</strong> {{subform}}</p>{{/if}}
+        {{#if desc}}<p><strong>DESC:</strong> {{desc}}</p>{{/if}}
+        {{#if fullname}}<p><strong>Full Name:</strong> {{fullname}}</p>{{/if}}
+        {{#if email}}<p><strong>Email:</strong> {{email}}</p>{{/if}}
+        {{#if contact}}<p><strong>Contact:</strong> {{contact}}</p>{{/if}}
+        {{#if address}}<p><strong>Address:</strong> {{address}}</p>{{/if}}
+        {{#if contactpref}}<p><strong>Contact Preference:</strong> {{contactpref}}</p>{{/if}}
+        {{#if marketing}}<p><strong>Marketing:</strong> {{marketing}}</p>{{/if}}
+        {{#if to}}<p><strong>To:</strong> {{to}}</p>{{/if}}
+        {{#if route}}<p><strong>Route:</strong> {{route}}</p>{{/if}}
+        {{#if stationstop}}<p><strong>Station/Stop:</strong> {{stationstop}}</p>{{/if}}
+        {{#if priority}}<p><strong>Priority:</strong> {{priority}}</p>{{/if}}
+        {{#if county}}<p><strong>County:</strong> {{county}}</p>{{/if}}
+        {{#if reporting}}<p><strong>Reporting:</strong> {{reporting}}</p>{{/if}}
+        {{#if date_of_event}}<p><strong>Date of Event:</strong> {{date_of_event}}</p>{{/if}}
+        {{#if time_of_event}}<p><strong>Time of Event:</strong> {{time_of_event}}</p>{{/if}}
+        {{#if requester_details}}<p><strong>Requester Details:</strong> {{requester_details}}</p>{{/if}}
+        {{#if what_required}}<p><strong>What Required:</strong> {{what_required}}</p>{{/if}}
+        {{#if location_event}}<p><strong>Location of Event:</strong> {{location_event}}</p>{{/if}}
+        {{#if date_of_feedback}}<p><strong>Date of Feedback:</strong> {{date_of_feedback}}</p>{{/if}}
+        {{#if time_of_feedback}}<p><strong>Time of Feedback:</strong> {{time_of_feedback}}</p>{{/if}}
+        {{#if requester_feedback}}<p><strong>Requester Feedback:</strong> {{requester_feedback}}</p>{{/if}}
+        {{#if what_required_feedback}}<p><strong>What Required Feedback:</strong> {{what_required_feedback}}</p>{{/if}}
+        {{#if location_feedback}}<p><strong>Location Feedback:</strong> {{location_feedback}}</p>{{/if}}
+        {{#if customer_feedback}}<p><strong>Customer Feedback:</strong> {{customer_feedback}}</p>{{/if}}
+        {{#if date_of_accessibility}}<p><strong>Date of Accessibility:</strong> {{date_of_accessibility}}</p>{{/if}}
+        {{#if time_of_accessibility}}<p><strong>Time of Accessibility:</strong> {{time_of_accessibility}}</p>{{/if}}
+        {{#if day_of_accessibility}}<p><strong>Day of Accessibility:</strong> {{day_of_accessibility}}</p>{{/if}}
+        {{#if assistance_required}}<p><strong>Assistance Required:</strong> {{assistance_required}}</p>{{/if}}
+        {{#if boarding_stop}}<p><strong>Boarding Stop:</strong> {{boarding_stop}}</p>{{/if}}
+        {{#if alighting_stop}}<p><strong>Alighting Stop:</strong> {{alighting_stop}}</p>{{/if}}
+        {{#if return_date}}<p><strong>Return Date:</strong> {{return_date}}</p>{{/if}}
+        {{#if return_time}}<p><strong>Return Time:</strong> {{return_time}}</p>{{/if}}
+        {{#if return_day}}<p><strong>Return Day:</strong> {{return_day}}</p>{{/if}}
+        {{#if return_boarding_stop}}<p><strong>Return Boarding Stop:</strong> {{return_boarding_stop}}</p>{{/if}}
+        {{#if return_alighting_stop}}<p><strong>Return Alighting Stop:</strong> {{return_alighting_stop}}</p>{{/if}}
+        {{#if what_is_req}}<p><strong>What Assistance is Required:</strong> {{what_is_req}}</p>{{/if}}
+      </div>
+
+
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const toggleButtons = document.querySelectorAll('.toggle-details');
+
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      const details = button.nextElementSibling; 
+
+      if (details.style.display === 'none') {
+        details.style.display = 'block'; 
+        button.textContent = 'Hide Details'; 
+      } else {
+        details.style.display = 'none'; 
+        button.textContent = 'Show Details';
+      }
+    });
+  });
+});
+</script>
+
+<style>
+.details {
+  padding: 10px;
+  border: 1px solid #ddd; 
+  margin-top: 10px;
+}
+</style>

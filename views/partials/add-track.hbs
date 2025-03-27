@@ -1,0 +1,884 @@
+<p class="is-size-3 has-text-weight-bold"> Add Case</p>
+<form class="box" action="/playlist/{{playlist._id}}/addtrack" method="POST">
+  <!-- Visible Fields for All Forms -->
+  <div class="field">
+    <p><strong>Subject *</strong></p>
+    <input class="input" type="text" placeholder="" name="subject" required>
+  </div>
+
+ <div class="field">
+  <p><strong>Description *</strong></p>
+  <div class="control">
+    <input class="input is-large" type="text" placeholder="" name="description" required>
+  </div>
+</div>
+
+  <p class="is-size-4"> Additional Fields</p>
+    <div class="field">
+    <div class="control">
+      <p><strong>Requester *</strong></p>
+      <div class="select">
+        <select name="requester" required>
+          <option value="" disabled selected>Select One</option>
+          <option>Anonymous</option>
+          <option>Customer Name</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <p><strong>Related Interaction</strong></p>
+      <div class="select">
+        <select name="related_interaction">
+          <option value="" disabled selected>Select One</option>
+          <option>Autopopulated</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <p><strong>Group</strong></p>
+      <div class="select">
+        <select name="group" required>
+          <option value="" disabled selected>Select One</option>
+          <option>be_escalations</option>
+          <option>zzz_test_complaints</option>
+          <option>zzz_test_ccc_general</option>
+          <option>mi&app</option>
+          <option>zzz_test_ccc_l2agents</option>
+          <option>agents</option>
+          <option>nta_escalations</option>
+          <option>be_commandcentre</option>
+          <option>ccc_l2agents</option>
+          <option>miandapp</option>
+          <option>zzz_test_ccc_inoffice</option>
+          <option>ccc_general</option>
+          <option>ccc_irishagents</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <p><strong>Assignee</strong></p>
+      <div class="select">
+        <select name="assignee">
+          <option value="" disabled selected>Select One</option>
+          <option>Me</option>
+          <option>Someone Else</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
+    <p><strong>Tags</strong></p>
+    <input class="input" type="text" placeholder="None" name="tags">
+  </div>
+
+   <!-- Form Dropdown -->
+  <div class="field">
+    <div class="control">
+      <p><strong>Form *</strong></p>
+      <div class="select">
+        <select id="form-selector" name="form" required>
+          <option value="" disabled selected>Select One</option>
+          <option value="default">Default Case Form</option>
+          <option value="enquiries">MI 2.0 General Enquiries/Booking/Ticketing</option>
+          <option value="escalation">MI 2.0 Escalation/Complaint</option>
+          <option value="feedback">MI 2.0 Feedback</option>
+          <option value="accessibility">MI 2.0 Accessibility Assistance</option>
+          <option value="asset_defect">MI 2.0 Asset Defect Reporting</option>
+          <option>MI 2.0 Anti-Social Behavior</option>
+          <option>MI 2.0 Service Disruption</option>
+          <option>MI 2.0 LRSD- Local Elected Representative/Politician</option>
+          <option>MI 2.0 Data/FOI Access Request</option>
+          <option>MI 2.0 TAS (Travel Assistance Scheme) enq/ Application</option>
+          <option>MI 2.0 NTA Enquiries</option>
+          <option>MI 2.0 Webform- English (Checked)</option>
+          <option>MI 2.0 Webform-Irish (Checked)</option>
+          <option>MI 2.0 TSECM Form (For Back end use only)</option>
+          <option>ZZZ_TEST MI 2.0 Webform- English (Checked)</option>
+          <option>ZZZ_TEST MI 2.0 Webform-Irish (Checked)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Fields for MI 2.0 General Enquiries -->
+  <div id="general-fields" style="display: none;">
+    <div class="field">
+      <p><strong>MI 2.0 Please select the initial Channel Type (This needs to be done only once, at the time the case is first created)</strong></p>
+      <div class="control">
+        <div class="select">
+          <select name="channel" required>
+            <option value="" disabled selected> Select One</option>
+            <option>Call</option>
+            <option>Webchat</option>
+            <option>Webform</option>
+            <option>Email</option>
+            <option>Whitemail</option>
+            <option>Social Media</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <p><strong>MI 2.0 Please select the sub form name</strong></p>
+        <div class="select">
+          <select name="subform" required>
+            <option value="" disabled selected>Select One</option>
+            <option>Asset Defect Reporting</option>
+            <option>Accessibility Assistance</option>
+            <option>TAS (Travel Assistance Scheme) enq/ Application</option>
+            <option>NTA Enquiries</option>
+            <option>General/Customer Enquiries</option>
+            <option>Data Access Request</option>
+            <option>FOI Request</option>
+            <option>Service Disruption Report</option>
+            <option>LRSD- Local Elected Representative/Politician</option>
+            <option>Feedback</option>  
+            <option>Anti Social Behaviour </option>
+            <option>Escalation</option>
+            <option>Complaint</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <p><strong>MI 2.0 DESC- Primary/Secondary/Tertiary Description</strong></p>
+        <div class="select">
+          <select name="desc" required>
+            <option value="" disabled selected>Select One</option>
+            <option>Other</option>
+            <option>Journey Planning</option>
+            <option>Tickets, Fares, and Refunds</option>
+            <option>Accessbility</option>
+            <option>Transport For Ireland</option>
+            <option>Give Feedback or Report a Problem</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+       <p><strong>MI 2.0 Full Name</strong></p>
+      <input class="input" type="text" placeholder="" name="fullname" required>
+    </div>
+
+    <div class="field">
+      <p><strong>MI 2.0 Email</strong></p>
+      <input class="input" type="text" placeholder="" name="email">
+    </div>
+
+    <div class="field">
+      <p><strong>MI 2.0 Contact Number (New)</strong></p>
+      <input class="input" type="text" placeholder="" name="contact">
+    </div>
+
+    <div class="field">
+      <p><strong>MI 2.0 Address</strong></p>
+      <input class="input" type="text" placeholder="" name="address">
+    </div>
+
+    <div class="field">
+      <p><strong>MI 2.0 Contact Preference</strong></p>
+      <div class="control">
+        <div class="select">
+          <select name="contactpref">
+            <option value="" disabled selected>Select One</option>
+            <option>Email</option>
+            <option>Phone</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="checkbox">
+        <input type="checkbox" name="marketing">
+        MI 2.0 Marketing Preferences
+      </label>
+    </div>
+
+    <div class="field">
+      <p><strong> MI 2.0 TO/TSP/NTA</strong></p>
+      <div class="control">
+        <div class="select">
+          <select name="to" required>
+            <option value="" disabled selected>Select One</option>
+            <option>Bus Éireann</option>
+            <option>Luas</option>
+            <option>Irish Rail</option>
+            <option>Dublin Bus</option>
+            <option>Go Ahead Ireland</option>
+            <option>Mticketing/Leap</option>
+            <option>NTA</option>
+            <option>NTA Department 1</option>
+            <option>NTA Department 2</option>
+            <option>NTA Department 3</option>
+            <option>NTA Department 4</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+        <p><strong>MI 2.0 Route</strong></p>
+      <div class="control">
+        <div class="select">
+          <select name="route" required>
+            <option value="" disabled selected>Select One</option>
+            <option>TFI 100-Strand Street The Long Walk # BEDA</option>
+            <option>TFI 100X-Holles Street Merrion Square South # N/A</option>
+            <option>TFI 101-Dublin Busáras Dublin Busáras # ECCC</option>
+            <option>TFI 101X-Wilton Terrace Wilton Terrace # ECCC</option>
+            <option>TFI 102A-St Fintan's Church Swords Pavilions SC # ODMA</option>
+            <option>TFI 102C-Balgriffin Cottages Balgriffin Cottages # ODMA</option>
+            <option>TFI 102-Dublin Airport DAA # ODMA</option>
+            <option>TFI 102X-Sword # ODMA</option>
+            <option>TFI 102X-Dunboyne Village Dunboyne Village # ODMA</option>
+            <option>TFI 103-Carmichael House Cathal Brugha St # BEDA</option>
+            <option>TFI 103X-Red Cow Luas Red Cow # BEDA</option>
+            <option>TFI 103X-Ballyfermot Westford # BEDA</option>
+            <option>TFI 103X-South Circular Road Cork St # BEDA</option>
+            <option>TFI 103X-South Townsend Street # BEDA</option>
+            <option>TFI 103X-UCD Belfield Campus Abbey Road # BEDA</option>
+            <option>TFI 104-Beaumont Hospital DCU Helix # ODMA</option>
+            <option>TFI 104-Clontarf Station DCU Helix # ODMA</option>
+            <option>TFI 105-Connolly Hospital Drogheda Bus Station # BEDA</option>
+            <option>TFI 105X-UCD Belfield Campus UCD Belfield Campus # BEDA</option>
+            <option>TFI 107-Abbey Road Abbey Road # BEDA</option>
+            <option>TFI 100-Strand Street The Long Walk # BEDA</option>
+            <option>TFI 108-Kells Bailieborough # BEDA</option>
+            <option>TFI 109A-DCU Dublin Busáras # BEDA</option>
+            <option>TFI 109B-Dublin Busáras Victorine Abbey # BEDA</option>
+            <option>TFI 109-Kennedy Road Virginia # BEDA</option>
+            <option>TFI 109X-Dublin Busáras Dublin Busáras # BEDA</option>
+            <option>TFI 111A-Cavan Bus Station Athboy # BEDA</option>
+            <option>TFI 111-Brides Glen Luas Dalkey Village # ODMA</option>
+            <option>TFI 111-Dublin Busáras Dublin Busáras # ODMA</option>
+            <option>TFI 111X-Wilton Terrace Wilton Terrace # BEDA</option>
+            <option>TFI 114-Rockview Rockview # ODMA</option>
+            <option>TFI 115C-Kilcock CHQ # N/A</option>
+            <option>TFI 115-Connolly Station Mullingar Station # BEDA</option>
+            <option>TFI 116-Sussex Road Parnell Square East # DBDA</option>
+            <option>TFI 118-Kilternan Village Eden Quay # DBDA</option>
+            <option>TFI 11-St Pappin's Road St Pappin's Road # DBDA</option>
+            <option>TFI 120A-Edenderry SC UCD # DCOM</option>
+            <option>TFI 120-American Embassy River Road # DBDA</option>
+            <option>TFI 120B-Connolly Station Mayor Street Lower # DCOM</option>
+            <option>TFI 120C-Enfield Tullamore # DCOM</option>
+            <option>Not Applicable</option>
+            <option>65 - Galway - Athlone - Monaghan</option>
+            <option>70 - Galway - Mullingar - Dundalk</option>
+            <option>72 - Limerick - Birr - Athlone</option>
+            <option>73 - Waterford - Athlone - Longford</option>
+            <option>100 - Drogheda - Dundalk - Newry</option>
+            <option>101 - Dublin - Airport - Drogheda</option>
+            <option>101X - Wilton Tce - Drogheda - Termon Abbey</option>
+            <option>103 - Dublin - Ashbourne - Ratoath</option>
+            <option>103X - Dublin - Ashbourne - Duleek - Navan</option>
+            <option>105 - Blanchardstown - Ashbourne - Ashbourne - Drogheda</option>
+            <option>105X - UCD - M3 - Ratoath - Ashbourne</option>
+            <option>107 - Dublin - Navan - Nobber - Kingscourt</option>
+            <option>108 - Dublin - Kells - Bailieboro</option>
+            <option>109 - Dublin - Navan - Kells - Cavan</option>
+            <option>109B - Dublin - Dunshaughlin - Trim</option>
+            <option>109X - Dublin - Kells - Cavan Hourly Express</option>
+            <option>111 - Wilton Tce - Trim - Granard - Cavan</option>
+            <option>111A - Delvin - Granard - Cavan</option>
+            <option>111X - Dublin express - Athboy - Clonmellon</option>
+            <option>115 - Dublin - Mullingar</option>
+            <option>131 - Bray - Wicklow</option>
+            <option>132 - Dublin - Carnew - Bunclody</option>
+            <option>133 - Dublin - Wicklow</option>
+            <option>134 - Dorey's Forge - Dunsany - Navan</option>
+            <option>136 - Ross Cross - Navan Shopping Centre</option>
+            <option>160 - Dundalk - Ravensdale - Newry</option>
+            <option>161 - Dundalk - Carlingford - Newry</option>
+            <option>162 - Dundalk - Monaghan - Clones - Cavan</option>
+            <option>167 - Dundalk - Louth - Ardee</option>
+            <option>168 - Dundalk - Annagassan</option>
+            <option>170 - Cavan - Dundalk</option>
+            <option>173 - Drogheda West St - Dominck St</option>
+            <option>174 - Long Walk - Muirhevnamuir</option>
+            <option>175 - Monaghan - Cootehill - Cavan</option>
+            <option>182 - Drogheda - Collon - Ardee - Monaghan</option>
+            <option>187 - Kells - Virginia - Ballyjamesduff</option>
+            <option>190 - Drogheda - Navan - Trim</option>
+            <option>201 - Lotabeg - Hollyhill - CIT - CUH</option>
+            <option>202 - Ringmahon - City - Hollyhill (Apple)</option>
+            <option>202A - Ringmahon - City - Hollyhill (Apple)</option>
+            <option>203 - Lehenaghmore - City Centre - Parklands</option>
+            <option>205 - Train Station - St. Patrick St - CIT</option>
+            <option>206 - Grange - Douglas - South Mall</option>
+            <option>207 - Donnybrook - City Centre - City Centre - Glenheights</option>
+            <option>208 - Lotabeg - Bishopstown - Curraheen</option>
+            <option>209 - Patrick St - Audley Place - Lotamore</option>
+            <option>212 - Kent Station - Blackrock - Mahon Point</option>
+            <option>213 - Lapps Quay (P&R) - Black Ash</option>
+            <option>214 - Glanmire - City Centre - CUH</option>
+            <option>215 - Mahon Point - Ballinlough - Cloghroe</option>
+            <option>216 - Mount Oval - City - Glasheen - CUH</option>
+            <option>219 - Mahon - Douglas - CUH/ CIT (South Orb)</option>
+            <option>220X - Ovens - Carrigaline - Crosshaven</option>
+            <option>223 - Cork - Ringaskiddy - Haulbowline</option>
+            <option>223X - South Mall - Haulbowline</option>
+            <option>225 - Cork Airport - Haulbowline</option>
+            <option>225L - Carrigaline - NMCI</option>
+            <option>226 - Train Stn - Airport - Kinsale</option>
+            <option>233 - Cork - Macroom</option>
+            <option>235 - Cork - Rylane - Stuake</option>
+            <option>237 - Cork - Skibereen - Goleen</option>
+            <option>239 - Cork - Bandon</option>
+            <option>240 - Cork - Cloyne - Ballycotton</option>
+            <option>241 - Cork - Midelton - Whitegate</option>
+            <option>243 - Cork - Newmarket/DoneRaile/Charleville</option>
+            <option>245 - Cork - Fermoy - Mitchelstown - Clonmel</option>
+            <option>245X - Busaras - Fermoy - Cork</option>
+            <option>248 - Cork - Carrignavar/ Glenville</option>
+            <option>257 - Macroom - Killarney</option>
+            <option>258 - Macroom - Rylane</option>
+            <option>259 - Macroom - Renaniree</option>
+            <option>260 - Cork - Youghal - Ardmore</option>
+            <option>261 - Cork - Midelton - Ballincurra</option>
+            <option>270 - Killarney - Kenmare - Skibbereen</option>
+            <option>271 - Tralee - Kerry Airport - Killarney</option>
+            <option>272 - Tralee - Listowel - Tarbert</option>
+            <option>275 - Tralee - Dingle</option>
+            <option>279 - Killarney - Cahersiveen - Waterville</option>
+            <option>279A - Waterville - Caherciveen - Killarney</option>
+            <option>284 - Killarney - Tralee</option>
+            <option>301 - Westbury - Regional Hospital</option>
+            <option>302 - City Centre - Caherdavin</option>
+            <option>303 - O'Malley Park - City Centre - Pineview</option>
+            <option>304 - UL - City Centre - Raheen</option>
+            <option>304A - Raheen - Bus Station - UL</option>
+            <option>305 - Lynwood Pk - City Centre - St Marys Pk</option>
+            <option>306 - Brookfield - City Centre - Ballynanty</option>
+            <option>313 - Limerick - Ardnacrusha</option>
+            <option>314 - Limerick - Foynes - Glin - Ballybunion</option>
+            <option>320 - Limerick - Charleville</option>
+            <option>321 - Limerick - Rathkeale - Newcastlewest</option>
+            <option>323 - Limerick - Killaloe - Nenagh - Birr</option>
+            <option>323X - Limerick - Birr - Athlone</option>
+            <option>324 - Nenagh - Borrisokane - Kilbarron</option>
+            <option>328 - Limerick - Mitchellstown</option>
+            <option>329 - Limerick - Bruff - Kilfinane</option>
+            <option>332 - Limerick - Dundrum</option>
+            <option>333 - Limerick - Ennis - Corofin - Doonbeg</option>
+            <option>336 - Limerick - Ennis - Kilrush - Kilkee</option>
+            <option>343 - Limerick - Shannon Airport - Ennis</option>
+            <option>345 - Limerick - Killaloe - Scariff</option>
+            <option>346 - Limerick - Scarriff - Whitegate</option>
+            <option>347 - Limerick - Tipperary</option>
+            <option>348 - Ennis - Tulla - Scariff</option>
+            <option>349 - Gort - Scariff - Feakle</option>
+            <option>350 - Galway - Kinvara - Doolin - Ennis</option>
+            <option>354 - Portlaw - Waterford - Dunmore East</option>
+            <option>355 - Waterford - Cahir</option>
+            <option>360 - Waterford - Tramore</option>
+            <option>360A - Waterford - WIT - Tramore</option>
+            <option>362 - Waterford - Dungarvan</option>
+            <option>365 - Waterford - Thomastown</option>
+            <option>366 - Waterford - Dungarvan - Lismore</option>
+            <option>370 - Waterford - New Ross - Wexford</option>
+            <option>371 - New Ross - Adamstown - Wexford</option>
+            <option>372 - New Ross - Foulksmills - Wexford</option>
+            <option>373 - New Ross - Fethard - Wexford</option>
+            <option>374 - New Ross - Kilkenny</option>
+            <option>375 - New Ross - Kiltealy - Enniscorthy</option>
+            <option>377 - Wexford - Edermine - Enniscorthy</option>
+            <option>378 - Wexford - Churchtown</option>
+            <option>379 - Wexford - Curracloe - Gorey</option>
+            <option>380 - Wexford - Crossabeg</option>
+            <option>381 - Wexford - Blackhall</option>
+            <option>382 - Adamstown - Wexford</option>
+            <option>383 - Wexford - Kilmore Quay</option>
+            <option>385 - Wexford - Rosslare Europort</option>
+            <option>401 - Eyre Square - Salthill</option>
+            <option>402 - Seacrest - Eyre Square - Merlin Park</option>
+            <option>404 - Eyre Square - Newcastle</option>
+            <option>405 - Rahoon - Eyre Square - Ballybane</option>
+            <option>407 - Eyre Square - Bóthar an Chóiste</option>
+            <option>409 - Eyre Square - Parkmore Ind. Est.</option>
+            <option>417 - Galway - Corofin Cross - Tuam</option>
+            <option>419 - Galway - Clifden</option>
+            <option>420 - Swinford - Claremorris</option>
+            <option>421 - Ballina - Pontoon - Castlebar</option>
+            <option>422 - Headford - Castlebar</option>
+            <option>423 - Westport - Clifden</option>
+            <option>424 - Galway - Lettermullen</option>
+            <option>425 - Galway - Roscommon - Longford</option>
+            <option>425A - Galway - Monivea - Mountbellew</option>
+            <option>429 - Galway - Tuam - Castlerea</option>
+            <option>434 - Galway - Gort</option>
+            <option>440 - Knock Airport - Westport - Dooagh</option>
+            <option>442 - Charlestown - Castlebar - Westport</option>
+            <option>443 - Ballina - Farragh Cross</option>
+            <option>444 - Ballina - Dromore West</option>
+            <option>446 - Ballina - Blacksod</option>
+            <option>447 - Finea - Castlepollard - Mullingar</option>
+            <option>448 - Shandonagh - Ballynacargy - Mullingar</option>
+            <option>450 - Dooagh - Louisburgh</option>
+            <option>451 - Ballina - Charlestown - Longford</option>
+            <option>455 - Ballina - Moygownagh - Crossmolina</option>
+            <option>456 - Galway - Westport - Ballina</option>
+            <option>457 - Castlrea - Ballintubber - Roscommon</option>
+            <option>458 - Sligo - Enniscrone - Ballina</option>
+            <option>461 - Sligo - Roscommon - Athlone</option>
+            <option>462 - Carrigallen - Ballinamore - Sligo</option>
+            <option>463 - Carrigallen - Mohill - Longford</option>
+            <option>464 - Carrigallen - Eniskillen</option>
+            <option>465 - Carrigallen - Cavan</option>
+            <option>466 - Athlone - Longford</option>
+            <option>A1 - Bellanamulla - Station - Creggan</option>
+            <option>B1 - Rail Station - Millfield Centre</option>
+            <option>NX - Dublin Wilton Terrace - Navan</option>
+            <option>W1 - Clock Tower - Ballybeg</option>
+            <option>W2 - Clock Tower - WIT - Meagher's Quay</option>
+            <option>W2 - The Square - Liffey Valley SC</option>
+            <option>W3 - Clock Tower - Meagher's Quay</option>
+            <option>W4 - Peter Street - Brownes Road</option>
+            <option>W4 - Peter Street - Brownes Road</option>
+            <option>W5 - Hospital - Oakwood</option>
+            <option>101X - Wilton Tce - Drogheda - Termon Abbey</option>
+            <option>109A - Dublin Airport/City Centre - Ashbourne - Ratoath - Dunshaughlin - Navan - Kells</option>
+            <option>115C - Mullingar - Killucan - Enfield</option>
+            <option>135 Scurloughstown - Navan</option>
+            <option>166 -Dundalk - Carrickmacross - Delvin</option>
+            <option>174a - Long walk  - Fatima</option>
+            <option>17B - Long Walk - Bay Estate</option>
+            <option>207A - Merchants Quay - Glen Ave - Glenthorn</option>
+            <option>209A - City Centre - Pouladuff - Connolly Rd</option>
+            <option>220 - Ballincollig - Douglas - Carrigaline</option>
+            <option>236 - Cork - Dunmanway - Bantry - Glengarriff - Castletownbere</option>
+            <option>274 = Tralee - Ballyheighe</option>
+            <option>276 - Killarney - Inch - Dingle</option>
+            <option>316 - Sixmilebridge - Shannon Town - Shannon Airport</option>
+            <option>317 - Limerick - Cratloe - Sixmilebridge - Kilmurry - Quinn - Ennis</option>
+            <option>317A - Limerick - Bunratty - Sixmilebridge - Kilmurry - Quinn - Ennis</option>
+            <option>282 - Kenmare - Ardgroom</option>
+            <option>322 - Lorrha - Terryglass - Coolbawn - Nenagh</option>
+            <option>323X - Limerick - Birr - Athlone</option>
+            <option>330 - Ennis - Newmarket on Fergus - Shannon Town - Shannon Airport</option>
+            <option>330X - Ennis - Limerick</option>
+            <option>341 - Shannon - Limerick - Newport - Cappamore</option>
+            <option>343X - Limerick Ennis</option>
+            <option>445 - Ballina - Killala - Ballycastle</option>
+            <option>454 - Ballina - Crossmolina - Lahardane - Castlebar - Westport</option>
+            <option>460 - Sligo - Castlerea</option>
+            <option>467 - Longford - Lanesboro - Roscommon</option>
+            <option>468 - Strokestown - Elphin - Carrick-on-Shannon</option>
+            <option>469 - Sligo - Drumkeeran - Drumshanbo - Carrick on Shannon - Longford</option>
+            <option>470 - Sligo - Manorhamilton - Glenfarne - Dromahair</option>
+            <option>480 - Derry - Donegal - Ballyshannon - Sligo</option>
+            <option>483 - Ballyshannon - Kinlough - Ballintrillick - Sligo</option>
+            <option>487 - Strabane - Raphoe - Letterkenny</option>
+            <option>489-  Letterkenny - Carrigans - St Johnston - Strabane</option>
+            <option>490 - Donegal - Killybegs - Glencolumbkille</option>
+            <option>491 - Letterkenny - Ballybofey</option>
+            <option>492 - Donegal - Glenties - Dungloe</option>
+            <option>494 - Strabane - Ballybofey</option>
+            <option>495 - Ballyshannon - Kinlough - Manorhamilton</option>
+            <option>A2 -Monksland - Bus/Rail Stn - Golden Island - Ballymahon Rd - AIT - Creggan Court</option>
+            <option>CW1 - Tyndall/CIFET to MSD Carlow via town centre</option>
+            <option>CW2 - Barrow Valley Retail Park to Wexford Road Business Park via town centre</option>
+            <option>N1 - Navan Town Service</option>
+            <option>N2 - Navan Town Service</option>
+            <option>D1- Drogheda - Laytown</option>
+            <option>D2 - Drogheda - Laytown via Golf Links Road</option>
+            <option>d4 - Colpe Road - Ballymakenny College</option>
+            <option>D5 - Colpe Road - Termonabbey</option>
+            <option>S1 - Sligo Town Service</option>
+            <option>S2 - Sligo Town Service</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <p><strong>MI 2.0 Station/Stop</strong></p>
+      <input class="input" type="text" placeholder="" name="stationstop">
+    </div>
+
+    <div class="field">
+      <p><strong>Priority</strong></p>
+      <div class="control">
+        <div class="select">
+          <select name="priority">
+            <option value="" disabled selected>Select One</option>
+            <option>Low</option>
+            <option>Normal</option>
+            <option>High</option>
+            <option>Urgent</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <p><strong>MI 2.0 County</strong></p>
+      <div class="control">
+        <div class="select">
+          <select name="county" required>
+            <option value="" disabled selected>Select One</option>
+            <option>Carlow</option>
+            <option>Cavan</option>
+            <option>Clare</option>
+            <option>Cork</option>
+            <option>Donegal</option>
+            <option>Dublin</option>
+            <option>Galway</option>
+            <option>Kerry</option>
+            <option>Kildare</option>
+            <option>Kilkenny</option>
+            <option>Laois</option>
+            <option>Leitrim</option>
+            <option>Limerick</option>
+            <option>Longford</option>
+            <option>Louth</option>
+            <option>Mayo</option>
+            <option>Meath</option>
+            <option>Monaghan</option>
+            <option>Offaly</option>
+            <option>Roscommon</option>
+            <option>Sligo</option>
+            <option>Tipperary</option>
+            <option>Waterford</option>
+            <option>Westmeath</option>
+            <option>Wexford</option>
+            <option>Wicklow</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <p><strong>MI 2.0 (For Reporting purpose only. Agent doesn't required to fill this ) Internal Status</strong></p>
+      <div class="control">
+        <div class="select">
+          <select name="reporting">
+            <option value="" disabled selected>Select One</option>
+            <option>Received and Acknowledged</option>
+            <option>Updated and Returned to CCC</option>
+            <option>Resolved and Returned to CCC</option>
+            <option>Returned to CCC Due to Error in Routing</option>
+            <option>Returned to CCC Due to Insufficient information</option>
+            <option>Approved and Send Back to Customer</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Fields for MI 2.0 Asset Defect Reporting -->
+  <div id="asset-defect-fields" style="display: none;">
+    <strong>MI 2.0 Type of Asset defect</strong>
+    <div class="field">
+      <input class="input" type="text" placeholder="Type of Asset Defect" name="type_of_asset_defect">
+    </div>
+    <strong>MI 2.0 Asset Defect Description</strong>
+    <div class="field">
+      <input class="input" type="text" placeholder="Asset Defect Description" name="asset_defect_description">
+    </div>
+  </div>
+  
+  <!-- Additional Fields for MI 2.0 Escalation/Complaint -->
+  <div id="escalation-fields" style="display: none;">
+    <div class="field">
+      <strong>MI 2.0 Date of Travel/Interaction/Event</strong>
+      <input class="input" type="date" placeholder="" name="date_of_event" >
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Time of Travel/Interaction/Event</strong>
+      <input class="input" type="text" placeholder="" name="time_of_event" >
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Requester</strong>
+      <input class="input" type="text" placeholder="" name="requester_details" >
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 What is Required</strong>
+      <input class="input" type="text" placeholder="" name="what_required" >
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Location of the Interaction/Event</strong>
+      <input class="input" type="text" placeholder="" name="location_event" >
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Risk</strong>
+      <div class="control">
+        <div class="select">
+          <select name="risk" >
+            <option value="" disabled selected></option>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Type of Escalation/Complaint</strong>
+      <div class="control">
+        <div class="select">
+          <select name="type_of_escalation" >
+            <option value="" disabled selected></option>
+            <option>Amber (Escalation)</option>
+            <option>Amber (Complaint)</option>
+            <option>Red (Escalation)</option>
+            <option>Red (Complaint)</option>
+            <option>Black (Escalation)</option>
+            <option>Black (Complaint)</option>
+            <option>Green (Feedback)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Fields for MI 2.0 Feedback -->
+  <div id="feedback-fields" style="display: none;">
+    <div class="field">
+       <strong>MI 2.0 Date of Travel/Interaction/Event</strong>
+      <input class="input" type="text" placeholder="" name="date_of_feedback" >
+    </div>
+
+    <div class="field">
+       <strong>MI 2.0 Time of Travel/Interaction/Event</strong>
+      <input class="input" type="text" placeholder="" name="time_of_feedback">
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Requester</strong>
+      <input class="input" type="text" placeholder="" name="requester_feedback">
+    </div>
+
+    <div class="field">
+       <strong>MI 2.0 What is Required</strong>
+      <input class="input" type="text" placeholder="" name="what_required_feedback">
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Location of the Interaction/Event</strong>
+      <input class="input" type="text" placeholder="" name="location_feedback">
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Feedback from Customer</strong>
+      <div class="control">
+        <div class="select">
+          <select name="customer_feedback" >
+            <option value="" disabled selected></option>
+            <option>Positive</option>
+            <option>Negative</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional Fields for MI 2.0 Accessibility Assistance -->
+  <div id="accessibility-fields" style="display: none;">
+    
+    <div class="field">
+      <strong>MI 2.0 What Assistance is Required</strong>
+      <div class="control">
+        <div class="select">
+          <select name="what_is_req" >
+            <option value="" disabled selected></option>
+            <option>General</option>
+            <option>Jam Cards</option>
+            <option>Mobility Scooter</option>
+            <option>Offer Me a Seat Badge</option>
+            <option>Service Dogs</option>
+            <option>Visually Impaired</option>
+            <option>Wheelchair Access</option>
+            <option>Wheelchair Needed</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    
+    <div class="field">
+      <strong>MI 2.0 Date of Travel/Interaction/Event</strong>
+      <input class="input" type="date" placeholder="" name="date_of_accessibility">
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Time of Travel/Interaction/Event</strong>
+      <input class="input" type="text" placeholder="Time of Travel/Interaction/Event" name="time_of_accessibility">
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Day</strong>
+      <div class="control">
+        <div class="select">
+          <select name="day_of_accessibility" >
+            <option value="" disabled selected></option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+            <option value="sunday">Sunday</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Boarding Stop</strong>
+      <input class="input" type="text" placeholder="" name="boarding_stop" >
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Alighting Stop</strong>
+      <input class="input" type="text" placeholder="" name="alighting_stop">
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Within or Outside 24 hours</strong>
+      <div class="control">
+        <div class="select">
+          <select name="within_outside_24_hours" >
+            <option value="" disabled selected></option>
+            <option>Within 24 hours</option>
+            <option>Outside 24 hours</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+       <strong>MI 2.0 Do you have a travel companion?</strong>
+      <div class="control">
+        <div class="select">
+          <select name="travel_companion">
+            <option value="" disabled selected></option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Do you have a reference wheelchair?</strong>
+      <div class="control">
+        <div class="select">
+          <select name="reference_wheelchair">
+            <option value="" disabled selected></option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Return Required</strong>
+      <div class="control">
+        <div class="select">
+          <select name="return_required">
+            <option value="" disabled selected></option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Date of Travel/Interaction/Event (Return)</strong>
+      <input class="input" type="date" placeholder="" name="return_date" >
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Time of Travel/Interaction/Event (Return)</strong>
+      <input class="input" type="text" placeholder="" name="return_time">
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Day (Return)</strong>
+      <div class="control">
+       <div class="select">
+          <select name="return_day" >
+            <option value="" disabled selected></option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+            <option value="sunday">Sunday</option>
+          </select>
+        </div>
+     </div>
+    </div>
+
+    <div class="field">
+      <strong>MI 2.0 Boarding Stop (Return)</strong>
+      <input class="input" type="text" placeholder="" name="return_boarding_stop" >
+    </div>
+
+    <div class="field">
+       <strong>MI 2.0 Alighting Stop (Return)</strong>
+      <input class="input" type="text" placeholder="" name="return_alighting_stop">
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="field">
+    <button class="button is-primary" type="submit">Submit</button>
+  </div>
+</form>
+
+<script>
+  document.getElementById('form-selector').addEventListener('change', function() {
+    const selectedValue = this.value;
+
+    // Hide all additional fields initially
+    document.getElementById('general-fields').style.display = 'none';
+    document.getElementById('escalation-fields').style.display = 'none';
+    document.getElementById('feedback-fields').style.display = 'none';
+    document.getElementById('accessibility-fields').style.display = 'none';
+    document.getElementById('asset-defect-fields').style.display = 'none'; // Hide asset defect fields
+
+    // Show fields based on selected form
+    if (selectedValue === 'enquiries') {
+      document.getElementById('general-fields').style.display = 'block';
+    } else if (selectedValue === 'escalation') {
+      document.getElementById('general-fields').style.display = 'block';
+      document.getElementById('escalation-fields').style.display = 'block';
+    } else if (selectedValue === 'feedback') {
+      document.getElementById('general-fields').style.display = 'block';
+      document.getElementById('feedback-fields').style.display = 'block';
+    } else if (selectedValue === 'accessibility') {
+      document.getElementById('general-fields').style.display = 'block';
+      document.getElementById('accessibility-fields').style.display = 'block';
+    } else if (selectedValue === 'asset_defect') {
+      document.getElementById('general-fields').style.display = 'block'; // Show general fields
+      document.getElementById('asset-defect-fields').style.display = 'block'; // Show asset defect fields
+    }
+  });
+</script>
